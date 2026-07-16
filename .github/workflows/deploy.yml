@@ -1,0 +1,47 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+
+env:
+  CF: https://api.cloudflare.com/client/v4/accounts/${{ secrets.CF_ACCOUNT_ID }}
+  P: otp-migrate
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Zine
+        uses: kristoff-it/setup-zine@v1
+        with:
+          version: v0.11.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm run build
+
+      - name: Ensure Pages project exists
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          EXISTS=$(curl -s -o /dev/null -w "%{http_code}" "$CF/pages/projects/$P" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN")
+          if [ "$EXISTS" = "404" ]; then
+            curl -s -X POST "$CF/pages/projects" \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d '{"name":"'"$P"'","production_branch":"main"}'
+          fi
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy public/ --project-name ${{ env.P }}

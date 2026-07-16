@@ -1,0 +1,16 @@
+# otp-migrate.sccl.cc
+
+Client-side Google Authenticator OTP migration decoder.
+
+## What it does
+Decodes the `otpauth-migration://` QR codes exported by Google Authenticator.
+Extracts individual TOTP/HOTP secrets for import into other authenticator apps.
+
+## How it works
+1. Scan or upload the migration QR code from Google Authenticator
+2. The app decodes the protobuf data entirely in your browser
+3. Get individual `otpauth://` URIs and QR codes for each account
+4. Import into Bitwarden, Authy, or any TOTP-compatible app
+
+## Privacy
+All processing happens client-side. No data is sent to any server.

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://otp-migrate.sccl.cc/sitemap.xml

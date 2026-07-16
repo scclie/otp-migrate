@@ -1,0 +1,11 @@
+{
+  "name": "otp-migrate",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "zine",
+    "build": "zine release --force",
+    "preview": "zine release --force && npx serve public"
+  }
+}

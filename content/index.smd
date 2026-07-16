@@ -1,0 +1,44 @@
+---
+.title = "otp-migrate.sccl.cc - client-side Google Authenticator OTP migration",
+.date = @date("2026-07-16T00:00:00"),
+.author = "sccl",
+.layout = "page.shtml",
+.custom = {
+    .description = "Decode Google Authenticator migration QR codes entirely in your browser. Export your OTP keys to any authenticator app.",
+},
+---
+
+```=html
+<div id="app">
+  <div id="drop-zone">
+    <p><span class="symbol">+</span> drop QR image here</p>
+    <p class="hint">or click to browse &nbsp;|&nbsp; or paste from clipboard &nbsp;|&nbsp; png, jpg, webp, bmp</p>
+    <input type="file" id="file-input" accept="image/*" style="display:none">
+  </div>
+
+  <div id="qr-drop">
+    <canvas id="qr-canvas"></canvas>
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <p class="section-title">or paste migration URL</p>
+    <input type="text" id="url-input" placeholder="otpauth-migration://offline?data=...">
+  </div>
+
+  <div id="error" style="display:none">
+    <p class="error-msg"></p>
+  </div>
+
+  <div id="result">
+    <div id="result-header">
+      <p id="result-count" class="section-title" style="margin:0;border:none;padding:0"></p>
+      <button id="btn-copy-all" class="btn btn-small">[ copy all secrets ]</button>
+    </div>
+    <div id="accounts"></div>
+  </div>
+</div>
+
+<script src="/js/jsqr.js"></script>
+<script src="/js/qrcode.js"></script>
+<script src="/js/app.js"></script>
+```

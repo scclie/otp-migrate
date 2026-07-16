@@ -1,0 +1,16 @@
+Site {
+    .title = "otp-migrate.sccl.cc",
+    .host_url = "https://otp-migrate.sccl.cc",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "js/jsqr.js",
+        "js/qrcode.js",
+        "js/app.js",
+        "img/site.webp",
+        "robots.txt",
+        "llms.txt",
+        "sitemap.xml",
+    ],
+}
