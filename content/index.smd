@@ -1,9 +1,9 @@
 ---
 .title = "otp-migrate.sccl.cc - client-side Google Authenticator OTP migration",
-.date = @date("2026-07-16T00:00:00"),
-.author = "sccl",
+.date = .date("2026-07-16T00:00:00"),
+.authors = ["sccl"],
 .layout = "page.shtml",
-.custom = {
+.custom = .{
     .description = "Decode Google Authenticator migration QR codes entirely in your browser. Export your OTP keys to any authenticator app.",
 },
 ---

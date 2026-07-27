@@ -1,4 +1,5 @@
-Site {
+.zine_version = "0.13.0",
+.site = .simple(.{
     .title = "otp-migrate.sccl.cc",
     .host_url = "https://otp-migrate.sccl.cc",
     .content_dir_path = "content",
@@ -13,4 +14,4 @@ Site {
         "llms.txt",
         "sitemap.xml",
     ],
-}
+}),

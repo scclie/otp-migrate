@@ -3,10 +3,10 @@
 let
   zine = pkgs.stdenv.mkDerivation {
     pname = "zine";
-    version = "0.11.3";
+    version = "0.13.0";
     src = pkgs.fetchurl {
-      url = "https://github.com/kristoff-it/zine/releases/download/v0.11.3/x86_64-linux-musl.tar.xz";
-      sha256 = "sha256-wl5Tcril0nWfK35YGu+5DIAZ/wBWojCpfv48jtqzvBk=";
+      url = "https://github.com/kristoff-it/zine/releases/download/v0.13.0/x86_64-linux-musl.tar.xz";
+      sha256 = "sha256-wlDgKdl4kBsMmjjqsKhg7524db9ob+Dwq/YfGAwoDbo=";
     };
     sourceRoot = ".";
     installPhase = ''
